@@ -4,7 +4,7 @@
 
 #include <utils/KeyedVector.h>
 #include <utils/RefBase.h>
-#include "GuiExtDataType.h"
+#include "inc/GuiExtDataType.h"
 
 namespace android {
 

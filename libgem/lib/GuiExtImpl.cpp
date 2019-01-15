@@ -22,7 +22,7 @@
 #include <binder/IInterface.h>
 #include <binder/IPCThreadState.h>
 
-#include <hardware/gralloc_extra.h>
+#include "include/hardware/gralloc_extra.h"
 
 #ifdef TOUCH_ION_BUFFER
 #include <linux/ion_drv.h>
@@ -30,10 +30,10 @@
 #endif
 
 #include "GuiExtImpl.h"
-#include "GuiExtDataType.h"
+#include "inc/GuiExtDataType.h"
 
-#include "graphics_mtk_defs.h"
-#include "gralloc_mtk_defs.h"
+#include "include/graphics_mtk_defs.h"
+#include "include/gralloc_mtk_defs.h"
 
 #ifdef CONFIG_FOR_SOURCE_PQ
 #include <sys/ioctl.h>

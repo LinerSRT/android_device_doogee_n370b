@@ -19,12 +19,12 @@
 #ifdef MTK_AOSP_ENHANCEMENT
 #include <ui/mediatek/IDumpTunnel.h>
 #else
-#include <mediatek/IDumpTunnel.h>
+#include "inc/mediatek/IDumpTunnel.h"
 #endif
 
 #include <cutils/memory.h>
 
-#include "GuiExtService.h"
+#include "inc/GuiExtService.h"
 #include "GuiExtImpl.h"
 
 namespace android {

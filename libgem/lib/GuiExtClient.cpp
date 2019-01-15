@@ -4,8 +4,8 @@
 #include <cutils/log.h>
 #include <binder/IServiceManager.h>
 #include <binder/ProcessState.h>
-#include "GuiExtClient.h"
-#include "IGuiExtService.h"
+#include "inc/GuiExtClient.h"
+#include "inc/IGuiExtService.h"
 
 namespace android {
 

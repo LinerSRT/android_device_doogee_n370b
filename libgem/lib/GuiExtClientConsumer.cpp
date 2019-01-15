@@ -9,8 +9,8 @@
 #include <gui/Surface.h>
 #include <gui/SurfaceComposerClient.h>
 
-#include "GuiExtClientConsumer.h"
-#include "GuiExtDataType.h"
+#include "inc/GuiExtClientConsumer.h"
+#include "inc/GuiExtDataType.h"
 
 namespace android {
 
