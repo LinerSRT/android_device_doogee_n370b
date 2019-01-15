@@ -4,6 +4,9 @@ import init.mt6735.usb.rc
 import init.mt6735.power.rc
 
 on init
+    export LD_PRELOAD "mtk_symbols.so"
+     export LD_SHIM_LIBS /system/lib/libcam_utils.so|mtk_symbols.so
+     
     mkdir /oem 0550 root root
     mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
     mkdir /storage/usbotg 0700 root root

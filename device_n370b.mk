@@ -239,6 +239,15 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     com.cyanogenmod.keyhandler
 
+PRODUCT_PACKAGES += \
+    libem_sensor_jni \
+    CIP_MD_SBP
+
+PRODUCT_PACKAGES += \
+    mtk_symbols
+
+LINKER_FORCED_SHIM_LIBS := $(LINKER_FORCED_SHIM_LIBS):/system/lib/libcam_utils.so|mtk_symbols.so
+
 PRODUCT_SYSTEM_SERVER_JARS += com.cyanogenmod.keyhandler
 
 # Never dexopt the keyhandler
