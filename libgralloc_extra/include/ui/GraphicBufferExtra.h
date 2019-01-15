@@ -9,7 +9,7 @@
 #include <utils/Singleton.h>
 #include <utils/RefBase.h>
 
-#include <hardware/gralloc_extra.h>
+#include "include/hardware/gralloc_extra.h"
 
 namespace android {
 // ---------------------------------------------------------------------------

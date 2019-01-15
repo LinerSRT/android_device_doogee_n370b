@@ -200,4 +200,4 @@ BOARD_SEPOLICY_DIRS := \
        device/doogee/n370b/sepolicy
 
 #HIDL
-DEVICE_MANIFEST_FILE := device/moto/panelli/hidl/manifest.xml
+DEVICE_MANIFEST_FILE := device/doogee/n370b/hidl/manifest.xml

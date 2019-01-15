@@ -9,7 +9,7 @@
 #include <sys/cdefs.h>
 #include <sys/types.h>
 
-#include <ui/gralloc_extra.h>
+#include "include/ui/gralloc_extra.h"
 
 __BEGIN_DECLS
 

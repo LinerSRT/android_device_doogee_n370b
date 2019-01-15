@@ -10,12 +10,12 @@
 #include <utils/Trace.h>
 
 #include <system/graphics.h>
-#include <graphics_mtk_defs.h>
+#include "include/graphics_mtk_defs.h"
 
 #include <hardware/gralloc.h>
-#include <hardware/gralloc_extra.h>
+#include "include/hardware/gralloc_extra.h"
 
-#include <ui/GraphicBufferExtra.h>
+#include "include/ui/GraphicBufferExtra.h"
 
 /* ----  IMPLEMENTATION macro  ---- */
 
