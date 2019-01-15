@@ -1,0 +1,71 @@
+diff --git a/audio/2.0/default/Android.mk b/audio/2.0/default/Android.mk
+index 8dec482..8fc5131 100644
+--- a/audio/2.0/default/Android.mk
++++ b/audio/2.0/default/Android.mk
+@@ -51,6 +51,10 @@ LOCAL_HEADER_LIBRARIES := \
+ 
+ LOCAL_WHOLE_STATIC_LIBRARIES := libmedia_helper
+ 
++ifeq ($(SUPPRESS_MTK_AUDIO_BLOB_ERR_MSG),true)
++LOCAL_CFLAGS = -DSUPPRESS_MTK_AUDIO_BLOB_ERR_MSG
++endif
++
+ include $(BUILD_SHARED_LIBRARY)
+ 
+ #
+diff --git a/audio/2.0/default/StreamOut.cpp b/audio/2.0/default/StreamOut.cpp
+index 22dcd0c..81f1d58 100644
+--- a/audio/2.0/default/StreamOut.cpp
++++ b/audio/2.0/default/StreamOut.cpp
+@@ -488,6 +488,9 @@ Result StreamOut::getPresentationPositionImpl(audio_stream_out_t* stream,
+     // continuously querying it, but the stream has been stopped.
+     static const std::vector<int> ignoredErrors{EINVAL, EAGAIN, ENODATA};
+     Result retval(Result::NOT_SUPPORTED);
++#ifdef SUPPRESS_MTK_AUDIO_BLOB_ERR_MSG
++    if (true) return retval;
++#endif
+     if (stream->get_presentation_position == NULL) return retval;
+     struct timespec halTimeStamp;
+     retval = Stream::analyzeStatus("get_presentation_position",
+diff --git a/camera/device/1.0/default/CameraDevice.cpp b/camera/device/1.0/default/CameraDevice.cpp
+index 116963b..dd97fa0 100644
+--- a/camera/device/1.0/default/CameraDevice.cpp
++++ b/camera/device/1.0/default/CameraDevice.cpp
+@@ -34,6 +34,7 @@ namespace implementation {
+ using ::android::hardware::graphics::common::V1_0::BufferUsage;
+ using ::android::hardware::graphics::common::V1_0::PixelFormat;
+ 
++CameraDevice* sUser = nullptr;
+ HandleImporter CameraDevice::sHandleImporter;
+ 
+ Status CameraDevice::getHidlStatus(const int& status) {
+@@ -361,7 +362,7 @@ CameraDevice::CameraHeapMemory::~CameraHeapMemory() {
+ // shared memory methods
+ camera_memory_t* CameraDevice::sGetMemory(int fd, size_t buf_size, uint_t num_bufs, void *user) {
+     ALOGV("%s", __FUNCTION__);
+-    CameraDevice* object = static_cast<CameraDevice*>(user);
++    CameraDevice* object = (user == nullptr)? sUser : static_cast<CameraDevice*>(user);
+     if (object->mDeviceCallback == nullptr) {
+         ALOGE("%s: camera HAL request memory while camera is not opened!", __FUNCTION__);
+         return nullptr;
+@@ -673,6 +674,7 @@ Return<Status> CameraDevice::dumpState(const hidl_handle& handle) {
+     int fd = handle->data[0];
+ 
+     if (mDevice != nullptr) {
++           sUser = this;
+         if (mDevice->ops->dump) { // It's fine if the HAL doesn't implement dump()
+             return getHidlStatus(mDevice->ops->dump(mDevice, fd));
+         }
+diff --git a/sensors/1.0/default/Sensors.cpp b/sensors/1.0/default/Sensors.cpp
+index 1100dd6..c41a744 100644
+--- a/sensors/1.0/default/Sensors.cpp
++++ b/sensors/1.0/default/Sensors.cpp
+@@ -95,7 +95,7 @@ Sensors::Sensors()
+ 
+     // Require all the old HAL APIs to be present except for injection, which
+     // is considered optional.
+-    CHECK_GE(getHalDeviceVersion(), SENSORS_DEVICE_API_VERSION_1_3);
++    CHECK_GE(getHalDeviceVersion(), SENSORS_DEVICE_API_VERSION_1_0);
+ 
+     if (getHalDeviceVersion() == SENSORS_DEVICE_API_VERSION_1_4) {
+         if (mSensorDevice->inject_sensor_data == nullptr) {
