@@ -5,7 +5,7 @@
 #include <utils/String8.h>
 #include <binder/Parcel.h>
 #include <cutils/log.h>
-#include <mediatek/IDumpTunnel.h>
+#include "inc/mediatek/IDumpTunnel.h"
 
 namespace android {
 

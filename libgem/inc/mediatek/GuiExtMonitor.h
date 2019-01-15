@@ -7,7 +7,7 @@
 #include <utils/Singleton.h>
 #include <utils/KeyedVector.h>
 
-#include <mediatek/IDumpTunnel.h>
+#include "IDumpTunnel.h"
 
 
 namespace android {

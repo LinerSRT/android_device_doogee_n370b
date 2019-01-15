@@ -3,7 +3,7 @@
 #define ANDROID_REFBASE_DUMP_H__
 
 #include <utils/String8.h>
-#include <mediatek/GuiExtMonitor.h>
+#include "GuiExtMonitor.h"
 
 namespace android {
 

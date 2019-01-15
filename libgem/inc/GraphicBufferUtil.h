@@ -6,7 +6,7 @@
 #include <ui/PixelFormat.h>
 #include <ui/Rect.h>
 
-#include <hardware/gralloc_extra.h>
+#include "include/hardware/gralloc_extra.h"
 
 namespace android {
 // ---------------------------------------------------------------------------

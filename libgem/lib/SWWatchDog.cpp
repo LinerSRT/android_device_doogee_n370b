@@ -5,7 +5,7 @@
 #include <utils/KeyedVector.h>
 #include <utils/Timers.h>
 
-#include "SWWatchDog.h"
+#include "inc/SWWatchDog.h"
 
 namespace android {
 
