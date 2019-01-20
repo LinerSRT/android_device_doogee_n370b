@@ -1,19 +1,5 @@
 
-
-#For GMO to reduce runtime memroy usage
-ifeq (yes,$(strip $(MTK_GMO_RAM_OPTIMIZE)))
-
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.hwui.path_cache_size=0
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.hwui.text_small_cache_width=512
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.hwui.text_small_cache_height=256
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.hwui.disable_asset_atlas=true
-
-# Disable fast starting window in GMO project
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.mtk_perf_fast_start_win=1
-
-#Swap
-PRODUCT_COPY_FILES += device/mediatek/common/fstab.enableswap_ago:root/fstab.enableswap
-endif
+include $(LOCAL_PATH)/ProjectConfig.mk
 
 #We use prebuilt modem from 6.0
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/modem_1_lwg_n.img:$(TARGET_COPY_OUT_VENDOR)/firmware/modem_1_lwg_n.img
@@ -58,6 +44,7 @@ PRODUCT_COPY_FILES += $(LOCAL_PATH)/android.hardware.telephony.gsm.xml:$(TARGET_
 
 
 # Set default USB interface
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += persist.sys.usb.config=mtp,adb
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += persist.service.acm.enable=0
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.mount.fs=EXT4
 

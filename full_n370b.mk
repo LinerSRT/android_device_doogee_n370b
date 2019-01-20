@@ -22,6 +22,7 @@ PRODUCT_DEVICE := n370b
 PRODUCT_MODEL := X5MP
 PRODUCT_POLICY := android.policy_phone
 PRODUCT_BRAND := Doogee
+PRODUCT_DEFAULT_LOCALE := ru_RU
 
 KERNEL_DEFCONFIG ?= n370b_defconfig
 
@@ -30,7 +31,3 @@ KERNEL_DEFCONFIG ?= n370b_defconfig
 #TRUSTY_PROJECT ?= k37mv1_bsp
 #A-GO
 PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
-# Reduces GC frequency of foreground apps by 50%
-PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.foreground-heap-growth-multiplier=2.0
-$(call inherit-product, $(SRC_TARGET_DIR)/product/locales_full.mk)
-$(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackageGo.mk)

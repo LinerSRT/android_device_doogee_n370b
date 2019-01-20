@@ -27,8 +27,6 @@ wifi.tethering.interface=ap0
 #
 
 ro.opengles.version=196609
-#ro.kernel.qemu=1
-#ro.kernel.qemu.gles=0
 
 wifi.direct.interface=p2p0
 #dalvik.vm.heapgrowthlimit=128m
@@ -55,18 +53,16 @@ ro.audio.silent=0
 ro.zygote.preload.enable=0
 
 # temporary enables NAV bar (soft keys)
-qemu.hw.mainkeys=0
+qemu.hw.mainkeys=1
+ro.sf.lcd_density=320
 
 ro.kernel.zio=38,108,105,16
 #ro.kernel.qemu=1
 #ro.kernel.qemu.gles=0
 #ro.boot.selinux=disable
 
-ro.sf.lcd_density=290
 
 # performance
 ro.mtk_perf_simple_start_win=1
 ro.mtk_perf_fast_start_win=1
 ro.mtk_perf_response_time=1
-# disable ipo for development
-sys.ipo.disable=1
