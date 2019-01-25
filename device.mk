@@ -5,6 +5,8 @@ include $(LOCAL_PATH)/ProjectConfig.mk
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/factory_init.project.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/factory_init.project.rc
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/init.project.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.project.rc
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/meta_init.project.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/meta_init.project.rc
+#Added PRELOAD LD wor working CONSYS_MT6735
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/init.preload.rc:root/init.preload.rc
 
 # thermal.conf and thermal_eng.conf:with BCCT 
 # thermal_NoBCCT.conf and thermal_eng_NoBCCT.conf:no BCCT 
@@ -140,7 +142,7 @@ PRODUCT_COPY_FILES += $(LOCAL_PATH)/prebuilts/firmware/mt6627/mt6627_fm_v5_patch
 
 #Using prebuilts kernel modules for CONSYS_MT6735
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/prebuilts/modules/bt_drv.ko:$(TARGET_COPY_OUT_VENDOR)/lib/modules/bt_drv.ko
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/prebuilts/modules/fmradio_drv.ko:$(TARGET_COPY_OUT_VENDOR)lib//modules/fmradio_drv.ko
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/prebuilts/modules/fmradio_drv.ko:$(TARGET_COPY_OUT_VENDOR)/lib//modules/fmradio_drv.ko
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/prebuilts/modules/gps_drv.ko:$(TARGET_COPY_OUT_VENDOR)/lib/modules/gps_drv.ko
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/prebuilts/modules/wlan_drv_gen2.ko:$(TARGET_COPY_OUT_VENDOR)/lib/modules/wlan_drv_gen2.ko
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/prebuilts/modules/wmt_chrdev_wifi.ko:$(TARGET_COPY_OUT_VENDOR)/lib/modules/wmt_chrdev_wifi.ko
